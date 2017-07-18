@@ -9,7 +9,7 @@ def make_schedule_pickle(sched_api_url):
     SCHED_DICT = SCHED_RQST.json()
     RACETABLE = SCHED_DICT['MRData']['RaceTable']
     season = RACETABLE['season']
-    pickle_path = os.path.join(MYDIR + '\\' + 'pickles\\schedules\\ScheduleTable_f1_{}.pickle'.format(season))
+    pickle_path = os.path.join(MYDIR + '/pickles/schedules/ScheduleTable_f1_{}.pickle'.format(season))
     with open(pickle_path, "wb") as f:
         pickle.dump(SCHED_DICT, f)
 
@@ -22,7 +22,7 @@ def make_race_result_pickle(api_url):
     season = RACETABLE['season']
     round_nr = RACETABLE['round']
 
-    with open('pickles\\race_results\\RaceResult_f1_{}_round{}.pickle'.format(season, round_nr), "wb") as f:
+    with open(os.path.join(MYDIR + '/pickles/race_results/RaceResult_f1_{}_round{}.pickle'.format(season, round_nr)), "wb") as f:
         pickle.dump(RQST_DICT, f)
 
 # for num in range(1,10):
@@ -36,5 +36,5 @@ def make_qualy_result_pickle(api_url):
     season = RACETABLE['season']
     round_nr = RACETABLE['round']
 
-    with open('pickles\\qualifying_results\\QualifyingResult_f1_{}_round{}.pickle'.format(season, round_nr), "wb") as f:
+    with open(os.path.join(MYDIR + 'pickles/qualifying_results/QualifyingResult_f1_{}_round{}.pickle'.format(season, round_nr)), "wb") as f:
         pickle.dump(RQST_DICT, f)
