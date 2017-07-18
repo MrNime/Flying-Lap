@@ -40,7 +40,7 @@ def race_results(season, ronde):
     return render_template('raceresult.html', dict = main_dict, table = table)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 #testen of een route werkt
 def test_route(route_path):
