@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Flying Lap</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.css">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png" sizes="16x16">
+    </head>
+    <body>
+        {% include 'includes/_navbar.html' %}
+        <div class="container is-fluid">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

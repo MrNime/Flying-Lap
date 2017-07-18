@@ -1,0 +1,19 @@
+.resultstitlediv {
+    display: block;
+    margin: auto;
+    color: red;
+    background-color: blue;
+}
+
+.resultstitlediv.p {
+    margin: auto;
+}
+
+.test {
+    font-size: 40px;
+    color: coral
+}
+
+.racename {
+    color: teal
+}

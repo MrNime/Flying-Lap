@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <section class="hero is-info is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Schedule
+          </h1>
+          <h2 class="subtitle">
+            For the {{ dict['MRData']['RaceTable']['season'] }} Formula 1 season
+          </h2>
+        </div>
+      </div>
+    </section>
+    {{ table | safe }}
+{% endblock %}
