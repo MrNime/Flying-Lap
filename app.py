@@ -26,7 +26,7 @@ def qualy_results(season, ronde):
 
 @app.route('/schedule')
 def schedule_page():
-    pickle_path = os.path.join(MYDIR + '\\' + 'pickles\\schedules\\ScheduleTable_f1_2017.pickle')
+    pickle_path = os.path.join(MYDIR + '/' + 'pickles/schedules/ScheduleTable_f1_2017.pickle')
     with open(pickle_path, 'rb') as f:
         main_dict = pickle.load(f)
     table = make_schedule_htmltable(pickle_path)
