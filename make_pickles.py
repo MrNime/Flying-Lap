@@ -1,13 +1,16 @@
 import pickle
 import requests
+import os
+
+MYDIR = os.path.dirname(__file__)
 
 def make_schedule_pickle(sched_api_url):
     SCHED_RQST = requests.get(str(sched_api_url))
     SCHED_DICT = SCHED_RQST.json()
     RACETABLE = SCHED_DICT['MRData']['RaceTable']
     season = RACETABLE['season']
-
-    with open('pickles\\schedules\\ScheduleTable_f1_{}.pickle'.format(season), "wb") as f:
+    pickle_path = os.path.join(MYDIR + '\\' + 'pickles\\schedules\\ScheduleTable_f1_{}.pickle'.format(season))
+    with open(pickle_path, "wb") as f:
         pickle.dump(SCHED_DICT, f)
 
 # make_schedule_pickle('http://ergast.com/api/f1/current.json')

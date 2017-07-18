@@ -3,9 +3,12 @@ Flask f1 app
 """
 from flask import Flask, render_template, request
 import pickle
+import os
 from make_tables import make_qualy_htmltable, make_race_htmltable, make_schedule_htmltable
 
 app = Flask(__name__)
+
+MYDIR = os.path.dirname(__file__)
 
 @app.route('/')
 def home():
@@ -23,7 +26,7 @@ def qualy_results(season, ronde):
 
 @app.route('/schedule')
 def schedule_page():
-    pickle_path = "pickles\\schedules\\ScheduleTable_f1_2017.pickle"
+    pickle_path = os.path.join(MYDIR + '\\' + 'pickles\\schedules\\ScheduleTable_f1_2017.pickle')
     with open(pickle_path, 'rb') as f:
         main_dict = pickle.load(f)
     table = make_schedule_htmltable(pickle_path)

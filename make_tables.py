@@ -7,6 +7,8 @@ import pandas as pd
 from nationality import nationality_to_code
 from teamcolors import constructor_id_to_hex
 
+MYDIR = os.path.dirname(__file__)
+
 def get_filepaths(folderpath):
     """
     returns list of filepath in a certain folderpath
