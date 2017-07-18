@@ -7,7 +7,7 @@ def make_schedule_pickle(sched_api_url):
     RACETABLE = SCHED_DICT['MRData']['RaceTable']
     season = RACETABLE['season']
 
-    with open('Flying Lap\\pickles\\schedules\\ScheduleTable_f1_{}.pickle'.format(season), "wb") as f:
+    with open('pickles\\schedules\\ScheduleTable_f1_{}.pickle'.format(season), "wb") as f:
         pickle.dump(SCHED_DICT, f)
 
 # make_schedule_pickle('http://ergast.com/api/f1/current.json')
@@ -19,7 +19,7 @@ def make_race_result_pickle(api_url):
     season = RACETABLE['season']
     round_nr = RACETABLE['round']
 
-    with open('Flying Lap\\pickles\\race_results\\RaceResult_f1_{}_round{}.pickle'.format(season, round_nr), "wb") as f:
+    with open('pickles\\race_results\\RaceResult_f1_{}_round{}.pickle'.format(season, round_nr), "wb") as f:
         pickle.dump(RQST_DICT, f)
 
 # for num in range(1,10):
@@ -33,5 +33,5 @@ def make_qualy_result_pickle(api_url):
     season = RACETABLE['season']
     round_nr = RACETABLE['round']
 
-    with open('Flying Lap\\pickles\\qualifying_results\\QualifyingResult_f1_{}_round{}.pickle'.format(season, round_nr), "wb") as f:
+    with open('pickles\\qualifying_results\\QualifyingResult_f1_{}_round{}.pickle'.format(season, round_nr), "wb") as f:
         pickle.dump(RQST_DICT, f)

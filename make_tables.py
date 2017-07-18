@@ -120,9 +120,9 @@ def make_schedule_list(race_list):
         circuit_name = '<a href=' + circuit_url + ' target="_blank">' + result['Circuit']['circuitName']
         date = result['date']
         qualy_url = 'qualifying/{}/{}'.format(season, round_nr)
-        qualy_file = Path('Flying Lap\\pickles\\qualifying_results\\QualifyingResults_f1_{}_round{}.pickle'.format(season, round_nr))
+        qualy_file = Path('pickles\\qualifying_results\\QualifyingResults_f1_{}_round{}.pickle'.format(season, round_nr))
         race_url = 'race/{}/{}'.format(season, round_nr)
-        race_file = Path('Flying Lap\\pickles\\race_results\\RaceResult_f1_{}_round{}.pickle'.format(season, round_nr))
+        race_file = Path('pickles\\race_results\\RaceResult_f1_{}_round{}.pickle'.format(season, round_nr))
         qualy_disabled = ''
         if qualy_file.is_file() == False:
             qualy_disabled = 'disabled'

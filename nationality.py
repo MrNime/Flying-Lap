@@ -1,7 +1,7 @@
 import pandas as pd
 
 #make dataframe
-df = pd.read_csv('Flying Lap\static\countries.csv')
+df = pd.read_csv('static\countries.csv')
 # print (df.get_value(1,'Nationality'))
 
 #set index to country name
@@ -11,8 +11,8 @@ df.set_index(['Country'], inplace = True)
 df['Code'] = df['Code'].str.lower()
 
 #example usage
-# fincode = df.loc[df['Nationality'] == 'Spanish','Code']
-# print(fincode[0])
+fincode = df.loc[df['Nationality'] == 'Spanish','Code']
+print(fincode[0])
 
 def nationality_to_code(nationality):
     """
