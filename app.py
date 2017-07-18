@@ -18,7 +18,7 @@ def home():
 def qualy_results(season, ronde):
     season = str(season)
     ronde = str(ronde)
-    pickle_path = "pickles\\qualifying_results\\QualifyingResults_f1_{}_round{}.pickle".format(season, ronde)
+    pickle_path = os.path.join(MYDIR + '/' + 'pickles/qualifying_results/QualifyingResults_f1_{}_round{}.pickle'.format(season, ronde))
     with open(pickle_path, 'rb') as f:
         main_dict = pickle.load(f)
     table = make_qualy_htmltable(pickle_path)
@@ -36,7 +36,7 @@ def schedule_page():
 def race_results(season, ronde):
     season = str(season)
     ronde = str(ronde)
-    pickle_path = "pickles\\race_results\\RaceResult_f1_{}_round{}.pickle".format(season, ronde)
+    pickle_path = os.path.join(MYDIR + '/' + 'pickles/race_results/RaceResult_f1_{}_round{}.pickle'.format(season, ronde))
     with open(pickle_path, 'rb') as f:
         main_dict = pickle.load(f)
     table = make_race_htmltable(pickle_path)
