@@ -10,5 +10,3 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return 'test'
-
-app.run()
