@@ -1,7 +1,7 @@
 import pandas as pd
 
 #make dataframe
-df = pd.read_csv('static\countries.csv')
+df = pd.read_csv('static\\countries.csv')
 # print (df.get_value(1,'Nationality'))
 
 #set index to country name
