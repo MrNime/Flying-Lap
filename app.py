@@ -42,7 +42,6 @@ def race_results(season, ronde):
     table = make_race_htmltable(pickle_path)
     return render_template('raceresult.html', dict = main_dict, table = table)
 
-app.run(debug=True)
 #testen of een route werkt
 def test_route(route_path):
     with app.test_client() as c:
