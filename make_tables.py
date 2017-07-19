@@ -157,20 +157,37 @@ def make_race_htmltable(race_pickle_path):
         nationality = result['Driver']['nationality']
         countrycode = nationality_to_code(nationality)
         flag = """<span class="flag-icon flag-icon-{}"></span>""".format(countrycode)
+        constructor_id = result['Constructor']['constructorId']
+        hex_code = constructor_id_to_hex(constructor_id)
+        teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
+        fastest_icon = """<i class="fa fa-clock-o" aria-hidden="true"></i>"""
+        if 'FastestLap' in result.keys():
+            fastest_lap = '<p style="display:inline">' + result['FastestLap']['Time']['time'] + '</p>'
+            if result['FastestLap']['rank'] == str(1):
+                fastest_lap +=  ' ' + fastest_icon
+        if 'status' in result.keys():
+            status = result['status']
+        if 'Constructor' in result.keys():
+            constructor = result['Constructor']['name']
         racetableline.append(pos)
-        racetableline.append(flag)
+        racetableline.append(teamcircle)
+        racetableline.append(constructor)
         racetableline.append(driver)
-        racetableline.append(nationality)
+        racetableline.append(status)
+        racetableline.append(str(fastest_lap))
+        racetableline.append(flag + ' ' + nationality)
         racetablelist.append(racetableline)
 
     #create pandas dataframe
     df = pd.DataFrame(racetablelist)
 
-    my_columns = ["POS", "", "Driver", 'Nationality']
+    my_columns = ["POS", "", "Team", "Driver", "Status", "Fastest Lap", "Nationality"]
     #assign column names to the dataframe
     df.columns = my_columns
     #replace the None values with an empty string
     df = df.fillna('')
+
+    pd.set_option('display.max_colwidth', -1)
     #export the dataframe to a HTML table
     # htmltable = df.to_html(index = False, classes='table is-striped', escape=False)
 
