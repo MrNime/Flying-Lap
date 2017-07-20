@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <form class="form-inline" method="POST" action="{{ url_for('test') }}">
+    <form class="form-inline" method="POST" action="{{ url_for('dropdown') }}">
         <div class="field">
             <p class="control has-icons-left">
                 <span class="select">
                   <select name="year">
-                    <option selected>2017</option>
+                    <option>2017</option>
                     <option>2016</option>
                     <option>2015</option>
                     <option>bla</option>
@@ -24,4 +24,5 @@
             <button class="button is-primary" href="/test">Submit</button>
         </div>
     </form>
+    <h1>You chose: {{ choice }}</h1>
 {% endblock %}

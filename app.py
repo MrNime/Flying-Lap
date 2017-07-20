@@ -42,14 +42,25 @@ def race_results(season, ronde):
     table = make_race_htmltable(pickle_path)
     return render_template('raceresult.html', dict = main_dict, table = table)
 
-@app.route("/dropdown")
+@app.route("/dropdown", methods=['GET', 'POST'])
 def dropdown():
-    return render_template('dropdown.html')
+    selected = request.form.get('year', 'testenal') #testenal is default
+    return render_template('dropdown.html', choice = selected)
 
 @app.route("/test" , methods=['GET', 'POST'])
 def test():
     select = request.form.get('year')
     return(str(select)) # just to see what select is
+
+@app.route('/form/')
+def form():
+    # list of tuples representing select options
+    choices = [(str(x), str(x)) for x in range(2000, 2017)]
+    # test if value was passed in (e.g. GET method), default value is 1
+    selected = request.args.get('year', '2014')
+    # application 'state' variable with default value and test
+    state = {'choice': selected}
+    return render_template('view_form.html', choices=choices, state=state)
 
 if __name__ == '__main__':
     app.run(debug = True)
