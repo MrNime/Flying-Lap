@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <form class="form-inline" method="POST" action="{{ url_for('test') }}">
+        <div class="field">
+            <p class="control has-icons-left">
+                <span class="select">
+                  <select name="year">
+                    <option selected>2017</option>
+                    <option>2016</option>
+                    <option>2015</option>
+                    <option>bla</option>
+                    <option>blabla</option>
+                    <option>text</option>
+                    <option>01/01/2015</option>
+                  </select>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-calendar"></i>
+                </span>
+            </p>
+        </div>
+        <div class="control">
+            <button class="button is-primary" href="/test">Submit</button>
+        </div>
+    </form>
+{% endblock %}

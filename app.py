@@ -42,6 +42,15 @@ def race_results(season, ronde):
     table = make_race_htmltable(pickle_path)
     return render_template('raceresult.html', dict = main_dict, table = table)
 
+@app.route("/dropdown")
+def dropdown():
+    return render_template('dropdown.html')
+
+@app.route("/test" , methods=['GET', 'POST'])
+def test():
+    select = request.form.get('year')
+    return(str(select)) # just to see what select is
+
 if __name__ == '__main__':
     app.run(debug = True)
 
