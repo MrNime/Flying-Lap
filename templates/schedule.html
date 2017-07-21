@@ -3,15 +3,44 @@
 {% block body %}
     <section class="hero is-info is-bold">
       <div class="hero-body">
-        <div class="container">
+        <div class="container has-text-centered">
           <h1 class="title">
             Schedule
           </h1>
           <h2 class="subtitle">
             For the {{ dict['MRData']['RaceTable']['season'] }} Formula 1 season
           </h2>
+          <h2>
+              For the {{ state.choice }} Formula 1 season
+          </h2>
+          <div class="has-text-centered">
+              <form class="" method="POST" action="{{ url_for('form') }}" style="display:inline-block">
+                  <div class="field has-addons">
+                      <div class="control has-icons-left">
+                          <span class="select">
+                            <select name="year">
+                                {% for row in choices %}
+                                    <option value="{{ row[0] }}"{% if row[0] == state.choice %} selected{% endif %}>{{ row[1] }}</option>
+                                {% endfor %}
+                            </select>
+                          </span>
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-calendar"></i>
+                          </span>
+                      </div>
+                      <div class="control">
+                          <button class="button is-primary">Submit</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
         </div>
       </div>
+      <div class="hero-foot">
+            <div class="container has-text-centered">
+                wubbalubbadubdub
+            </div>
+        </div>
     </section>
     {{ table | safe }}
 {% endblock %}
