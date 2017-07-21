@@ -23,7 +23,7 @@ def make_race_result_pickle(api_url):
     with open(pickle_path, "wb") as f:
         pickle.dump(RQST_DICT, f)
 
-# for season in range(2013, 2017):
+# for season in range(2000, 2013):
 #     for round_nr in range(1,11):
 #         make_race_result_pickle('http://ergast.com/api/f1/{}/{}/results.json'.format(season, round_nr))
 
@@ -36,3 +36,7 @@ def make_qualy_result_pickle(api_url):
 
     with open(os.path.join(MYDIR + '\\pickles\\qualifying_results\\{season}\\QualifyingResult_f1_{season}_round{round}.pickle'.format(season = season, round = round_nr)), "wb") as f:
         pickle.dump(RQST_DICT, f)
+
+# for season in range(2000, 2017):
+#     for round_nr in range(1,11):
+#         make_qualy_result_pickle('http://ergast.com/api/f1/{}/{}/qualifying.json'.format(season, round_nr))
