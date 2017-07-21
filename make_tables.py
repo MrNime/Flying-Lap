@@ -29,8 +29,11 @@ def make_qualy_htmltable(qualy_pickle_path):
         pos = result['position']
         driver = result['Driver']['code']
         constructor_id = result['Constructor']['constructorId']
-        hex_code = constructor_id_to_hex(constructor_id)
-        teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
+        try:
+            hex_code = constructor_id_to_hex(constructor_id)
+            teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
+        except:
+            teamcircle = ' '
         if 'Q1' in result.keys():
             q1 = result['Q1']
         if 'Q2' in result.keys():
@@ -122,9 +125,9 @@ def make_schedule_list(race_list):
         circuit_name = '<a href=' + circuit_url + ' target="_blank">' + result['Circuit']['circuitName']
         date = result['date']
         qualy_url = '/qualifying/{}/{}'.format(season, round_nr)
-        qualy_file = os.path.join(MYDIR + '/pickles/qualifying_results/QualifyingResults_f1_{}_round{}.pickle'.format(season, round_nr))
+        qualy_file = os.path.join(MYDIR + '/pickles/qualifying_results/{season}/QualifyingResult_f1_{season}_round{round_nr}.pickle'.format(season = season, round_nr = round_nr))
         race_url = '/race/{}/{}'.format(season, round_nr)
-        race_file = os.path.join(MYDIR + '/pickles/race_results/RaceResult_f1_{}_round{}.pickle'.format(season, round_nr))
+        race_file = os.path.join(MYDIR + '/pickles/race_results/{season}/RaceResult_f1_{season}_round{round_nr}.pickle'.format(season = season, round_nr = round_nr))
         qualy_disabled = ''
         if Path(qualy_file).is_file() == False:
             qualy_disabled = 'disabled'
@@ -152,14 +155,23 @@ def make_race_htmltable(race_pickle_path):
     racetablelist = []
     for result in RACERESULTS:
         racetableline = []
-        pos = result['position']
-        driver = result['Driver']['givenName'] + ' ' + result['Driver']['familyName']
-        nationality = result['Driver']['nationality']
-        countrycode = nationality_to_code(nationality)
-        flag = """<span class="flag-icon flag-icon-{}"></span>""".format(countrycode)
-        constructor_id = result['Constructor']['constructorId']
-        hex_code = constructor_id_to_hex(constructor_id)
-        teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
+        if 'position' in result.keys():
+            pos = result['position']
+        if 'Driver' in result.keys():
+            driver = result['Driver']['givenName'] + ' ' + result['Driver']['familyName']
+            nationality = result['Driver']['nationality']
+            try:
+                countrycode = nationality_to_code(nationality)
+                flag = """<span class="flag-icon flag-icon-{}"></span>""".format(countrycode)
+            except:
+                flag = ' '
+        if 'Constructor' in result.keys():
+            constructor_id = result['Constructor']['constructorId']
+            try:
+                hex_code = constructor_id_to_hex(constructor_id)
+                teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
+            except:
+                teamcircle = ' '
         fastest_icon = """<i class="fa fa-clock-o" aria-hidden="true"></i>"""
         if 'FastestLap' in result.keys():
             fastest_lap = '<p style="display:inline">' + result['FastestLap']['Time']['time'] + '</p>'
