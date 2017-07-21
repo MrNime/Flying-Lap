@@ -13,7 +13,9 @@ def make_schedule_pickle(sched_api_url):
     with open(pickle_path, "wb") as f:
         pickle.dump(SCHED_DICT, f)
 
-# make_schedule_pickle('http://ergast.com/api/f1/current.json')
+
+# for year in range(2000, 2017):
+#     make_schedule_pickle('http://ergast.com/api/f1/{}.json'.format(year))
 
 def make_race_result_pickle(api_url):
     RQST = requests.get(str(api_url))

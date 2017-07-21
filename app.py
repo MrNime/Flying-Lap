@@ -27,7 +27,7 @@ def qualy_results(season, ronde):
 @app.route('/schedule/<int:year>')
 def schedule_page(year):
     year = str(year)
-    pickle_path = os.path.join(MYDIR + '/' + 'pickles/schedules/ScheduleTable_f1_2017.pickle')
+    pickle_path = os.path.join(MYDIR + '/' + 'pickles/schedules/ScheduleTable_f1_{}.pickle'.format(year))
     choices = [(str(x), str(x)) for x in range(2000, 2018)]
     selected = request.form.get('year', year)
     state = {'choice': selected}
