@@ -1,11 +1,22 @@
-name,constructorId,Hex,RGB
-Mercedes,mercedes,00CFBA,"0,207,186"
-Red Bull,red_bull,00007D,"0,0,125"
-Ferrari,ferrari,C30000,"195,0,0"
-Force India,force_india,FF80C7,"255,8,199"
-Williams,williams,FFFFFF,"255,255,255"
-McLaren,mclaren,FF7B08,"255,123,8"
-Toro Rosso,toro_rosso,0000FF,"0,0,255"
-Haas,haas,6C0000,"108,0,0"
-Renault,renault,FFD800,"255,216,0"
-Sauber,sauber,006EFF,"0,110,255"
+,name,constructorId,Hex,RGB
+2017,Mercedes,mercedes,00CFBA,"0,207,186"
+2017,Red Bull,red_bull,00007D,"0,0,125"
+2017,Ferrari,ferrari,C30000,"195,0,0"
+2017,Force India,force_india,FF80C7,"255,8,199"
+2017,Williams,williams,FFFFFF,"255,255,255"
+2017,McLaren,mclaren,FF7B08,"255,123,8"
+2017,Toro Rosso,toro_rosso,0000FF,"0,0,255"
+2017,Haas,haas,6C0000,"108,0,0"
+2017,Renault,renault,FFD800,"255,216,0"
+2017,Sauber,sauber,006EFF,"0,110,255"
+2016,Mercedes,mercedes,2AB4A5,
+2016,Ferrari,ferrari,C30000,
+2016,Red Bull,red_bull,00007D,
+2016,Williams,williams,FFFFFF,
+2016,Force India,force_india,FF5F0F,
+2016,Toro Rosso,toro_rosso,0000FF,
+2016,McLaren,mclaren,808080,
+2016,Haas,haas,6C0000,
+2016,Renault,renault,FFD800,
+2016,Manor,manor,323232,
+2016,Sauber,sauber,006EFF,

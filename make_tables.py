@@ -22,6 +22,7 @@ def make_qualy_htmltable(qualy_pickle_path):
     RACETABLE = main_dict['MRData']['RaceTable'] #is een dict
     RACEINFO = RACETABLE['Races'][0] #item 0 (dict) uit list, is alles
     QUALIFYINGRESULTS = RACEINFO['QualifyingResults'] #is een lijst met dicts
+    season = RACETABLE['season']
     #make an html table and save it
     qualytablelist = []
     for result in QUALIFYINGRESULTS:
@@ -30,7 +31,7 @@ def make_qualy_htmltable(qualy_pickle_path):
         driver = result['Driver']['givenName'] + ' ' + result['Driver']['familyName']
         constructor_id = result['Constructor']['constructorId']
         try:
-            hex_code = constructor_id_to_hex(constructor_id)
+            hex_code = constructor_id_to_hex(constructor_id, int(season))
             teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
         except:
             teamcircle = ' '
@@ -158,6 +159,7 @@ def make_race_htmltable(race_pickle_path):
     RACETABLE = main_dict['MRData']['RaceTable'] #is een dict
     RACEINFO = RACETABLE['Races'][0] #item 0 (dict) uit list, is alles
     RACERESULTS = RACEINFO['Results'] #is een lijst met dicts
+    season = RACETABLE['season']
     #make an html table and save it
     racetablelist = []
     for result in RACERESULTS:
@@ -175,7 +177,7 @@ def make_race_htmltable(race_pickle_path):
         if 'Constructor' in result.keys():
             constructor_id = result['Constructor']['constructorId']
             try:
-                hex_code = constructor_id_to_hex(constructor_id)
+                hex_code = constructor_id_to_hex(constructor_id, int(season))
                 teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
             except:
                 teamcircle = ' '
