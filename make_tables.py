@@ -58,7 +58,7 @@ def make_qualy_htmltable(qualy_pickle_path):
         if time_delta.seconds == 0 and time_delta.microseconds == 0:
             gap = None
         else:
-            gap = '+' + str(time_delta.seconds) + '.' + str(time_delta.microseconds)[:3]
+            gap = '+' + str(time_delta.seconds) + '.' + '{:03.0f}'.format(time_delta.microseconds / 1000.0)
         qualytableline.append(pos)
         qualytableline.append(teamcircle)
         qualytableline.append(driver)
