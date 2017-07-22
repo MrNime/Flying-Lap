@@ -197,7 +197,10 @@ def make_race_htmltable(race_pickle_path):
         if 'status' in result.keys():
             status = result['status']
             if status == 'Finished':
-                status = str(time - first_time)
+                time_delta = time - first_time
+                status = '+' + str(time_delta.seconds) + '.' + '{:03.0f}'.format(time_delta.microseconds / 1000.0) + 's'
+                if time_delta == first_time - first_time:
+                    status = ''
         if 'Constructor' in result.keys():
             constructor = result['Constructor']['name']
         racetableline.append(pos)
