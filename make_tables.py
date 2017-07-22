@@ -160,6 +160,8 @@ def make_race_htmltable(race_pickle_path):
     RACEINFO = RACETABLE['Races'][0] #item 0 (dict) uit list, is alles
     RACERESULTS = RACEINFO['Results'] #is een lijst met dicts
     season = RACETABLE['season']
+    first_millis = int(RACERESULTS[0]['Time']['millis'])
+    first_time= datetime.timedelta(milliseconds = first_millis)
     #make an html table and save it
     racetablelist = []
     for result in RACERESULTS:
@@ -188,8 +190,14 @@ def make_race_htmltable(race_pickle_path):
                 fastest_lap +=  ' ' + fastest_icon
         else:
             fastest_lap = ''
+        if 'Time' in result.keys():
+            if 'millis' in result['Time']:
+                millis = int(result['Time']['millis'])
+                time = datetime.timedelta(milliseconds = millis)
         if 'status' in result.keys():
             status = result['status']
+            if status == 'Finished':
+                status = str(time - first_time)
         if 'Constructor' in result.keys():
             constructor = result['Constructor']['name']
         racetableline.append(pos)
