@@ -35,38 +35,30 @@ def make_qualy_htmltable(qualy_pickle_path):
             teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
         except:
             teamcircle = ' '
+        time_format = '%M:%S.%f'
         if 'Q1' in result.keys():
             q1 = result['Q1']
+            curr_fastest_time = q1
         else:
             q1 = None
         if 'Q2' in result.keys():
             q2 = result['Q2']
+            curr_fastest_time = q2
         else:
             q2 = None
         if 'Q3' in result.keys():
             q3 = result['Q3']
+            curr_fastest_time = q3
         else:
             q3 = None
-        curr_fastest_time = '0:00.000'
         time_format = '%M:%S.%f'
-        if 'Q3' in result.keys():
-            pole_time = datetime.datetime.strptime(QUALIFYINGRESULTS[0]['Q3'], time_format)
-        else:
-            pole_time = None
-        if q3:
-            curr_fastest_time = q3
-        elif q2:
-            curr_fastest_time = q2
-        elif q1:
-            curr_fastest_time = q1
+        pole_time = datetime.datetime.strptime(QUALIFYINGRESULTS[0]['Q3'], time_format)
         curr_fastest_time = datetime.datetime.strptime(curr_fastest_time, time_format)
-        gap = ''
-        if pole_time:
-            time_delta = curr_fastest_time - pole_time
-            if time_delta.seconds == 0 and time_delta.microseconds == 0:
-                gap = None
-            else:
-                gap = '+' + str(time_delta.seconds) + '.' + str(time_delta.microseconds)[:3]
+        time_delta = curr_fastest_time - pole_time
+        if time_delta.seconds == 0 and time_delta.microseconds == 0:
+            gap = None
+        else:
+            gap = '+' + str(time_delta.seconds) + '.' + str(time_delta.microseconds)[:3]
         qualytableline.append(pos)
         qualytableline.append(teamcircle)
         qualytableline.append(driver)
