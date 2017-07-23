@@ -23,6 +23,13 @@ def make_qualy_htmltable(qualy_pickle_path):
     RACEINFO = RACETABLE['Races'][0] #item 0 (dict) uit list, is alles
     QUALIFYINGRESULTS = RACEINFO['QualifyingResults'] #is een lijst met dicts
     season = RACETABLE['season']
+    time_format = '%M:%S.%f'
+    if 'Q3' in QUALIFYINGRESULTS[0].keys():
+        pole_time = datetime.datetime.strptime(QUALIFYINGRESULTS[0]['Q3'], time_format)
+    elif 'Q2' in QUALIFYINGRESULTS[0].keys():
+        pole_time = datetime.datetime.strptime(QUALIFYINGRESULTS[0]['Q2'], time_format)
+    elif 'Q1' in QUALIFYINGRESULTS[0].keys():
+        pole_time = datetime.datetime.strptime(QUALIFYINGRESULTS[0]['Q1'], time_format)
     #make an html table and save it
     qualytablelist = []
     for result in QUALIFYINGRESULTS:
@@ -35,7 +42,6 @@ def make_qualy_htmltable(qualy_pickle_path):
             teamcircle = """<i class="fa fa-circle" aria-hidden="true" style="color:{}"></i>""".format('#' + str(hex_code))
         except:
             teamcircle = ' '
-        time_format = '%M:%S.%f'
         if 'Q1' in result.keys():
             q1 = result['Q1']
             curr_fastest_time = q1
@@ -51,14 +57,17 @@ def make_qualy_htmltable(qualy_pickle_path):
             curr_fastest_time = q3
         else:
             q3 = None
-        time_format = '%M:%S.%f'
-        pole_time = datetime.datetime.strptime(QUALIFYINGRESULTS[0]['Q3'], time_format)
-        curr_fastest_time = datetime.datetime.strptime(curr_fastest_time, time_format)
-        time_delta = curr_fastest_time - pole_time
+        time_delta = pole_time - pole_time
+        if curr_fastest_time != '':
+            curr_fastest_time = datetime.datetime.strptime(curr_fastest_time, time_format)
+            time_delta = curr_fastest_time - pole_time
         if time_delta.seconds == 0 and time_delta.microseconds == 0:
             gap = None
         else:
-            gap = '+' + str(time_delta.seconds) + '.' + '{:03.0f}'.format(time_delta.microseconds / 1000.0)
+            gap = '{:.03f}'.format(time_delta.total_seconds())
+            if gap[0] != '-':
+                gap = '+' + gap
+            # '+' + '{}'.format(time_delta.seconds) + '.' + '{:03.0f}'.format(time_delta.microseconds / 1000.0)
         qualytableline.append(pos)
         qualytableline.append(teamcircle)
         qualytableline.append(driver)
