@@ -11,8 +11,7 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('schedule_page', year=2017) }}">Schedule</a></li>
             <li><a href="{{ url_for('schedule_page', year=season) }}">Season {{ season }}</a></li>
-            <li><a href="{{ url_for('race_results', season=season, ronde=round) }}">Round {{ round }}</a></li>
-            <li class="is-active"><a>Race</a></li>
+            <li class="is-active"><a href="{{ url_for('race_results', season=season, ronde=round) }}">Race results for round {{ round }}</a></li>
           </ul>
         </nav>
     </section>
