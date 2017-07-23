@@ -14,6 +14,10 @@ MYDIR = os.path.dirname(__file__)
 def home():
     return render_template('home.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/qualifying/<season>/<ronde>')
 def qualy_results(season, ronde):
     season = str(season)

@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block body %}
+<section>
+    <nav class="breadcrumb is-centered">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="is-active"><a href="{{ url_for('about') }}">Schedule</a></li>
+        </ul>
+    </nav>
+</section>
+<section class="hero is-medium has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+        <div class="columns" id="bovenste">
+          <div class="column has-text-centered">
+            <span class="icon is-large has-text-primary">
+                <i class="fa fa-database" aria-hidden="true"></i>
+            </span>
+            <p class="title is-4">Data</p>
+            <p class="subtitle is-6">from the <a href="http://ergast.com/mrd/" target="_blank">Ergast API</a></p>
+          </div>
+          <div class="column has-text-centered">
+            <span class="icon is-large has-text-primary">
+                <i class="fa fa-css3" aria-hidden="true"></i>
+            </span>
+            <p class="title is-4">CSS Framework</p>
+            <p class="subtitle is-6"><a href="http://http://bulma.io" target="_blank">Bulma.io</a></p>
+          </div>
+          <div class="column has-text-centered">
+            <span class="icon is-large has-text-primary">
+                <i class="fa fa-code" aria-hidden="true"></i>
+            </span>
+            <p class="title is-4">Code</p>
+            <p class="subtitle is-6">Made with Python <a href="http://flask.pocoo.org/" target="_blank">Flask</a></p>
+          </div>
+        </div>
+        <div class="columns">
+            <div class="column has-text-centered">
+              <span class="icon is-large has-text-primary">
+                  <i class="fa fa-github" aria-hidden="true"></i>
+              </span>
+              <p class="title is-4">Source code</p>
+              <p class="subtitle is-6">Available on <a href="https://github.com/MrNime/Flying-Lap" target="_blank">Github</a></p>
+            </div>
+            <div class="column has-text-centered">
+              <span class="icon is-large has-text-primary">
+                  <i class="fa fa-bug" aria-hidden="true"></i>
+              </span>
+              <p class="title is-4">Bugs</p>
+              <p class="subtitle is-6">Report <a href="https://github.com/MrNime/Flying-Lap/issues" target="_blank">issues</a></p>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
